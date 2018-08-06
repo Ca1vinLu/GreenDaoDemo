@@ -2,6 +2,7 @@ package com.meitu.lyz.greendaodemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -31,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
         mDeleteBtn = findViewById(R.id.delete_btn);
         mDataRv = findViewById(R.id.data_rv);
 
+        mDataRv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mUserAdapter = new UserAdapter();
-
         mDataRv.setAdapter(mUserAdapter);
+        mUserAdapter.setData(UserDaoHelper.queryAll());
 
 
         mRefreshBtn.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
                 user.setName(System.currentTimeMillis() + "");
                 user.setSex(System.currentTimeMillis() % 2 == 0);
                 UserDaoHelper.insert(user);
+                mRefreshBtn.performClick();
+            }
+        });
+
+        mDeleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserDaoHelper.delete(mUserAdapter.getItemCount());
+                mRefreshBtn.performClick();
             }
         });
     }
