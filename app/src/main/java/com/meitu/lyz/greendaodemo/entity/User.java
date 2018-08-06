@@ -10,8 +10,8 @@ import org.greenrobot.greendao.annotation.Transient;
  */
 @Entity
 public class User {
-    @Id
-    private int id;
+    @Id(autoincrement = true)
+    private Long id;
     private String name;
     private String password;
     private boolean sex;
@@ -19,8 +19,8 @@ public class User {
     @Transient
     private String test;
 
-    @Generated(hash = 1472763677)
-    public User(int id, String name, String password, boolean sex) {
+    @Generated(hash = 171161998)
+    public User(Long id, String name, String password, boolean sex) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -31,11 +31,11 @@ public class User {
     public User() {
     }
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,11 +63,7 @@ public class User {
         this.sex = sex;
     }
 
-    public String getTest() {
-        return this.test;
-    }
+    
 
-    public void setTest(String test) {
-        this.test = test;
-    }
+
 }
