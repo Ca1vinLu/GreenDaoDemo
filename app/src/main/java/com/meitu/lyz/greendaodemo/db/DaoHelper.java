@@ -3,9 +3,9 @@ package com.meitu.lyz.greendaodemo.db;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.meitu.lyz.greendaodemo.MyApplication;
-import com.meitu.lyz.greendaodemo.entity.DaoMaster;
-import com.meitu.lyz.greendaodemo.entity.DaoSession;
-import com.meitu.lyz.greendaodemo.entity.UserDao;
+import com.meitu.lyz.greendaodemo.dao.DaoMaster;
+import com.meitu.lyz.greendaodemo.dao.DaoSession;
+import com.meitu.lyz.greendaodemo.dao.UserDao;
 
 /**
  * @author LYZ 2018.08.06
