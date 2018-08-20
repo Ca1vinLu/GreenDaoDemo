@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.meitu.lyz.greendaodemo.db.UserDaoHelper;
 import com.meitu.lyz.greendaodemo.entity.User;
 
 import java.util.List;
@@ -24,10 +25,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder viewHolder, int i) {
         User user = data.get(i);
         viewHolder.mNameTv.setText(user.getName());
         viewHolder.mSexTv.setText(user.getSex() ? "男" : "女");
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserDaoHelper.delete(data.get(viewHolder.getAdapterPosition()).getId());
+            }
+        });
     }
 
     @Override
